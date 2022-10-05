@@ -1,4 +1,4 @@
-# groupomania
+# Groupomania
 Bienvenue sur Groupomania ! 
 
 Pour utiliser correctement l'API, veuillez suivre ces instructions :
