@@ -47,7 +47,7 @@ exports.signIn = (req, res) => {
 };
 
 
-//getUser
+//getUser pour obtenir les infos
 exports.getUser = (req, res) => {
   User.findOne({ _id: req.auth.userId })
   .then(user => res.status(200).json(user))

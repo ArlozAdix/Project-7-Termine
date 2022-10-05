@@ -15,9 +15,6 @@ exports.getOnePost = (req, res) => {
 };
 
 exports.createPost = (req, res) => {
-    // console.log(req.body)
-    // let img = '';
-    // if(req.body.file !== '') { img = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`};
     const postObject = req.body;
     delete postObject._id;
     delete postObject._userId;
@@ -73,6 +70,7 @@ exports.createPost = (req, res) => {
         });
  };
 
+ // si 1 like, si -1 dislike + Verification des utilisateurs deja like
  exports.likePost = (req, res, next) => {
     Post.findOne({ _id: req.params.id})
     .then(post => {

@@ -25,6 +25,7 @@ function CreatePost() {
     const handleCreate = async(e) => {
         e.preventDefault();
         
+        //FormData pour Multer
         let formData = new FormData()
         formData.append('file', file);
         formData.append('pseudo', user.pseudo);

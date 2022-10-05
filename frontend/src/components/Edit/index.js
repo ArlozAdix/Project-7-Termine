@@ -43,6 +43,7 @@ function Edit(props) {
     const handleEdit = async(e) => {
         e.preventDefault();
         
+        //FormData pour Multer 
         let formData = new FormData()
         formData.append('file', file);
         formData.append('content', content);

@@ -9,6 +9,7 @@ function NavBar() {
     const token = localStorage.getItem("token");
     const [user, setUser] = useState('');
 
+    // GetUser, Recupere les informations de l'utilisateur
     useEffect(() => {
         axios({
         method: "get",
@@ -28,11 +29,13 @@ function NavBar() {
                         <img className="img-fluid" src={logo} alt='logo' />
                     </NavLink>
                     <div  className='d-flex flex-row me-2'>
+                        {/* Affiche que l'utilisateur est Admin si c'est le cas */}
                         {user.isAdmin === true ? (
                             <>
                                 <h3 className='me-4'>Utilisateur Admin</h3>
                             </>
                         ) : (null)}
+                        {/* Affiche un message de bienvenue si l'utilisateur est connecte */}
                         {user  ? (
                                 <>
                                     <h3 className='me-4' >Bienvenue {user.pseudo}</h3>

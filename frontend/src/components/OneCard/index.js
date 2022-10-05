@@ -8,7 +8,7 @@ function OneCard(props) {
     const token = localStorage.getItem("token");
     const [user, setUser] = useState('');
 
-    //GetUser
+    //GetUser informations
     useEffect(() => {
         if( !user) {axios({
         method: "get",
@@ -38,6 +38,7 @@ function OneCard(props) {
     const editPost = () => {
         window.location=`/edit?id=${props.id}`
     }
+    
     //Suppr button
     const supprPost = async () => {
         await axios ({

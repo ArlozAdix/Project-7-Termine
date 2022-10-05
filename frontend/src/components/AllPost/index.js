@@ -30,6 +30,7 @@ function Post() {
         })
     })
 
+    //Fonction Like
     const like = props => async() => {
         await axios ({
             method: "post",
@@ -45,6 +46,7 @@ function Post() {
         .catch((err) => console.log(err));
     };
 
+    //Fonction dislike
     const dislike = props => async() => {
         await axios ({
             method: "post",

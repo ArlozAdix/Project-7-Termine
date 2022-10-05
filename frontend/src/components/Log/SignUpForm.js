@@ -9,8 +9,9 @@ const SignUpForm = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        const passwordConfirmError = document.querySelector('.password-confirm.error');
 
+        // Verifie si els deux mots de passes correspondent
+        const passwordConfirmError = document.querySelector('.password-confirm.error');
         passwordConfirmError.innerHTML = "";
 
         if (password !== controlPassword) {
