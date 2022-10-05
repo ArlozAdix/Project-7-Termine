@@ -27,7 +27,12 @@ function NavBar() {
                     <NavLink className='navbar-brand col-3' to="/">
                         <img className="img-fluid" src={logo} alt='logo' />
                     </NavLink>
-                    <div  className='d-flex flex-row me-2'> 
+                    <div  className='d-flex flex-row me-2'>
+                        {user.isAdmin === true ? (
+                            <>
+                                <h3 className='me-4'>Utilisateur Admin</h3>
+                            </>
+                        ) : (null)}
                         {user  ? (
                                 <>
                                     <h3 className='me-4' >Bienvenue {user.pseudo}</h3>

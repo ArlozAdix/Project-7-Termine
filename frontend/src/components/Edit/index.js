@@ -3,6 +3,7 @@ import axios from "axios";
 
 function Edit(props) {
 
+    const [post, setPost] = useState('');
     const [file, setFile] = useState('')
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -21,7 +22,23 @@ function Edit(props) {
     .then((res) => {setUser(res.data)})
     .catch((err) => console.log(err));
     }
-})
+    })
+
+    //Get Post informations
+    useEffect(() => {
+        if( !post) {
+    axios({
+        method: "get",
+        url:`http://localhost:5000/api/post/${props.id}`
+    })
+    .then((res) =>{
+        setPost(res.data)
+        setContent(res.data.content)
+        setTitle(res.data.title)})
+
+    .catch((err) => console.log(err));
+        }
+    });
 
     const handleEdit = async(e) => {
         e.preventDefault();
