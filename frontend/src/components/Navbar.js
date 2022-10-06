@@ -25,28 +25,25 @@ function NavBar() {
     return (
         <div className='container-fluid'>
             <nav className='border-primary navbar navbar-light border' >
-                    <NavLink className='navbar-brand col-3' to="/">
+                    <NavLink className='navbar-brand col-sm-3' to="/">
                         <img className="img-fluid" src={logo} alt='logo' />
                     </NavLink>
-                    <div  className='d-flex flex-row me-2'>
                         {/* Affiche que l'utilisateur est Admin si c'est le cas */}
                         {user.isAdmin === true ? (
                             <>
-                                <h3 className='me-4'>Utilisateur Admin</h3>
+                                <h3 className=''>Utilisateur Admin</h3>
                             </>
                         ) : (null)}
                         {/* Affiche un message de bienvenue si l'utilisateur est connecte */}
                         {user  ? (
-                                <>
-                                    <h3 className='me-4' >Bienvenue {user.pseudo}</h3>
-                                    <NavLink   className='btn btn-primary me-2 text-light' to="/create">Creer une publication</NavLink>
+                                <div>
+                                    <h3 className='mx-2' >Bienvenue {user.pseudo}</h3>
+                                    <NavLink   className='btn btn-primary text-light mx-2' to="/create">Creer une publication</NavLink>
                                     <Logout />
-                                </>
+                                </div>
                             ) : ( 
-                                <NavLink className='btn btn-primary me-2 text-light' to="/profil"> Connexion / inscription</NavLink>
+                                <NavLink className='btn btn-primary text-light mx-2' to="/profil"> Connexion / inscription</NavLink>
                             )}
-                        
-                    </div>
             </nav>
         </div>
     )

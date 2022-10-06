@@ -33,8 +33,8 @@ const SignUpForm = () => {
 
     return (
         <>
-        <div className="d-flex justify-content-center">
-                <form className=" rounded-3 border border-5 border-primary col-3 p-3 mt-5" action="" onSubmit={handleRegister} id="sign-up-form">
+        <div>
+                <form className="rounded-3 border border-5 border-primary col-lg-9 mx-auto mt-5 p-2" action="" onSubmit={handleRegister} id="sign-up-form">
                     <label className="form-label" htmlFor="pseudo">Pseudonyme</label>
                     <input 
                     type="text" 
@@ -44,7 +44,7 @@ const SignUpForm = () => {
                     onChange={(e) => setPseudo(e.target.value)} 
                     value={pseudo}
                     />
-                    <label class="form-label" htmlFor="email">Email</label>
+                    <label className="form-label" htmlFor="email">Email</label>
                     <input 
                     type="text" 
                     name="email" 

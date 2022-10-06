@@ -72,8 +72,8 @@ function Edit(props) {
     };
 
     return (
-        <div className="d-flex justify-content-center">
-            <form className=" rounded-3 border border-5 border-primary col-3 p-3 mt-5" action="" encType="multipart/form-data" onSubmit={handleEdit}>
+        <div>
+            <form className="rounded-3 border border-5 border-primary col-lg-9 mx-auto mt-5 p-2" action="" encType="multipart/form-data" onSubmit={handleEdit}>
                 <label className="form-label" htmlFor="title" >Titre</label>
                 <input 
                 type="text" 
@@ -86,6 +86,7 @@ function Edit(props) {
                 <br/>
                 <label className="form-label" htmlFor="content">Publication</label>
                 <textarea 
+                rows="10"
                 type="text" 
                 name="content"
                 className="form-control" 
@@ -105,7 +106,7 @@ function Edit(props) {
                 />
                 <br/>
                 <div className="text-center">
-                    <input className="col-5 btn btn-primary mb-3 text-light" type="submit" value="Modifier ma publication" />
+                    <input className="btn btn-primary text-light" type="submit" value="Modifier ma publication" />
                 </div>
             </form>
         </div>

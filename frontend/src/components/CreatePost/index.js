@@ -54,8 +54,8 @@ function CreatePost() {
     };
 
     return (
-        <div className="d-flex justify-content-center">
-            <form className=" rounded-3 border border-5 border-primary col-3 p-3 mt-5" action="" encType="multipart/form-data" onSubmit={handleCreate}>
+        <div>
+            <form className="rounded-3 border border-5 border-primary col-lg-9 mx-auto mt-5 p-2" action="" encType="multipart/form-data" onSubmit={handleCreate}>
                 <label className="form-label" htmlFor="title" >Titre</label>
                 <input 
                 type="text" 
@@ -68,9 +68,10 @@ function CreatePost() {
                 <br/>
                 <label className="form-label" htmlFor="content">Publication</label>
                 <textarea 
+                rows="10"
                 type="text" 
                 name="content"
-                class="form-control" 
+                className="form-control" 
                 id="content" 
                 onChange={(e) => setContent(e.target.value)} 
                 value={content}
@@ -87,7 +88,7 @@ function CreatePost() {
                 />
                 <br/>
                 <div className="text-center">
-                    <input className="col-2 btn btn-primary mb-3 text-light" type="submit" value="Publier" />
+                    <input className="btn btn-primary text-light" type="submit" value="Publier" />
                 </div>
             </form>
         </div>

@@ -60,26 +60,28 @@ function OneCard(props) {
 
     return (
         <>
-        <div className="d-flex flex-column align-items-center">
-            <div className="card col-8 mt-5 shadow" style={{height:400}} key={post._id}>
-                            <h3 className="card-header text-center">{post.title}</h3>
-                            <div className="card-body d-flex flex-row overflow-hidden">
-                                <div className="flex-grow-1">
-                                    <p className="card-text text-wrap">{post.content}</p>
-                                </div>
-                                <img className="mh-100 rounded" src={post.imageUrl} alt={post.title} />
-                            </div>
-                            <div className="card-footer d-flex flex-row">
-                                <div className=" me-2">
-                                    <NavLink className="btn btn-primary text-wrap" to="/">Voir toutes les publications</NavLink>
-                                </div>
-                                <p className="h-100 text-wrap fst-italic fs-5 text"> Publié par {post.pseudo}</p>
+        <div className="">
+            <div className="col-lg-9 mx-auto card mt-5 shadow" key={post._id}>
+                            <h3 className="card-header text-center bg-info">{post.title}</h3>
+
+                            <div className="row g-0 m-2">
+                                        <div className="col-md-8">
+                                            <p className="card-text">{post.content}</p>
+                                        </div>
+                                        <div className="col-md-4">
+                                            <img className="img-fluid rounded" src={post.imageUrl} alt={post.title} />
+                                        </div>
+                                    </div>
+
+                            <div className="card-footer d-flex flex-row bg-info">
+                                <NavLink className="btn btn-primary text-light my-auto" to="/">Voir toutes les publications</NavLink>
+                                <p className="fst-italic fs-6 m-auto"> Publié par {post.pseudo}</p>
                                 {user._id === post.userId || user.isAdmin === true?(
                                 <>
-                                    <button className="btn btn-secondary col-2 me-2 ms-auto" onClick={editPost}>
+                                    <button className="btn btn-secondary me-2" onClick={editPost}>
                                     Editer le post
                                     </button>
-                                    <button className="btn btn-secondary col-2" onClick={supprPost}>
+                                    <button className="btn btn-secondary" onClick={supprPost}>
                                     Supprimer le post
                                     </button>
                                 </>

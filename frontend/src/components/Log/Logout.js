@@ -8,7 +8,7 @@ function Logout() {
     }
 
     return (
-        <button className="btn btn-secondary" onClick={logout}>Deconnexion
+        <button className="btn btn-secondary mx-2" onClick={logout}>Deconnexion
         </button>
     )
 }

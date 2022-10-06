@@ -63,33 +63,35 @@ function Post() {
     };
 
     return (
-            <div className="d-flex flex-column align-items-center">
-            {posts.slice(0).reverse().map((post) =>{
-            return <div className="card col-6 mt-5 shadow" style={{height:400}} key={post._id}>
-                                <h3 className="card-header text-center bg-info">{post.title}</h3>
-                                <div className="card-body d-flex flex-row overflow-hidden">
-                                    <div className="flex-grow-1">
-                                        <p className="card-text text-wrap">{post.content}</p>
+            <div className="">
+                {posts.slice(0).reverse().map((post) =>{
+                return <div className="col-lg-9 mx-auto card mt-5 shadow" key={post._id}>
+                                    <h3 className="card-header text-center bg-info">{post.title}</h3>
+
+                                    <div className="row g-0 m-2">
+                                        <div className="col-md-8">
+                                            <p className="card-text">{post.content}</p>
+                                        </div>
+                                        <div className="col-md-4">
+                                            <img className="img-fluid rounded" src={post.imageUrl} alt={post.title} />
+                                        </div>
                                     </div>
-                                    <img className="mh-100 rounded " src={post.imageUrl} alt={post.title} />
-                                </div>
-                                <div className="card-footer d-flex flex-row bg-info">
-                                    <div className=" me-2">
-                                        <NavLink className="btn btn-primary text-wrap text-light" to={`/post?id=${post._id}`}>Voir la publication</NavLink>
+
+                                    <div className="card-footer d-flex flex-row bg-info">
+                                        <NavLink className="btn btn-primary text-light my-auto" to={`/post?id=${post._id}`}>Voir la publication</NavLink>
+                                        <p className="fst-italic fs-6 m-auto"> Publié par {post.pseudo}</p>
+                                        {user === true? (<>
+                                            <button className="btn btn-secondary me-2" onClick={like(post._id)}>
+                                            {post.likes} {heart}
+                                            </button>
+                                            <button className="btn btn-secondary" onClick={dislike(post._id)}>
+                                            {post.dislikes} {disheart}
+                                            </button>
+                                            </>
+                                        ):(null)}
                                     </div>
-                                    <p className="h-100 text-wrap fst-italic fs-5 text"> Publié par {post.pseudo}</p>
-                                    {user === true? (<>
-                                        <button className="btn btn-secondary col-1 me-2 ms-auto" onClick={like(post._id)}>
-                                        {post.likes} {heart}
-                                        </button>
-                                        <button className="btn btn-secondary col-1" onClick={dislike(post._id)}>
-                                        {post.dislikes} {disheart}
-                                        </button>
-                                        </>
-                                    ):(null)}
                                 </div>
-                            </div>
-                })}
+                    })}
             </div>
     )
 }
