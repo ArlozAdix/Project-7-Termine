@@ -16,13 +16,17 @@ exports.getOnePost = (req, res) => {
 };
 
 exports.createPost = (req, res) => {
-    const postObject = req.body;
+    const postObject = req.file ? {
+        ...req.body,
+        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+    } : { ...req.body,
+        imageUrl: `` 
+    }
     delete postObject._id;
     delete postObject._userId;
     const post = new Post({
         ...postObject,
         userId: req.auth.userId,
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
         likes: 0,
         dislikes: 0
     });
@@ -39,7 +43,8 @@ exports.createPost = (req, res) => {
     const updatePost = req.file ? {
         ...req.body,
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-    } : { ...req.body };
+    } : { ...req.body,
+        imageUrl: ``  };
   
     delete updatePost._userId;
     Post.findOne({_id: req.params.id})

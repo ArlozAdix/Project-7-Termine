@@ -68,9 +68,11 @@ function OneCard(props) {
                                         <div className="col-md-8">
                                             <p className="card-text">{post.content}</p>
                                         </div>
+                                        {post.imageUrl ? (
                                         <div className="col-md-4">
                                             <img className="img-fluid rounded" src={post.imageUrl} alt={post.title} />
                                         </div>
+                                        ) : (null)}
                                     </div>
 
                             <div className="card-footer d-flex flex-row bg-info">
