@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { signUpErrors } = require('../errors')
 
 // Controller signup
 exports.signUp = (req, res) => {
@@ -14,7 +15,10 @@ exports.signUp = (req, res) => {
         });
         user.save()
           .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-          .catch(error => res.status(400).json({ error }));
+          .catch(err => {
+            const error = signUpErrors(err)
+            res.status(400).json({ error })
+          });
       })
       .catch(error => res.status(500).json({ error }));
   };

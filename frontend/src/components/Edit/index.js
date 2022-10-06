@@ -10,6 +10,8 @@ function Edit(props) {
     const token = localStorage.getItem("token");
     const [user, setUser] = useState('');
 
+    const titleError = document.querySelector('.title.error');
+
     //GetUser
     useEffect(() => {
         if( !user) {axios({
@@ -67,7 +69,8 @@ function Edit(props) {
             window.location = '/';
          })
          .catch((err) =>{
-            console.log(err);
+            console.log(err)
+            titleError.innerHTML = err.response.data.error.length;
          })
     };
 
@@ -82,7 +85,9 @@ function Edit(props) {
                 id="title" 
                 onChange={(e) => setTitle(e.target.value)} 
                 value={title}
+                placeholder="24 caracteres maximums"
                 />
+                <div className="text-primary title error"></div>
                 <br/>
                 <label className="form-label" htmlFor="content">Publication</label>
                 <textarea 

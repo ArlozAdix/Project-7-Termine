@@ -1,6 +1,7 @@
 // Importation modele Post
 const Post = require('../models/post');
 const fs = require('fs');
+const { postErrors } = require('../errors')
 
 exports.getAllPosts = (req, res) => {
     Post.find()
@@ -27,7 +28,10 @@ exports.createPost = (req, res) => {
     });
     post.save()
     .then(() => { res.status(201).json({message: 'Post enregistré !'})})
-    .catch(error => { res.status(400).json( { error })})
+    .catch(err => {
+        const error = postErrors(err)
+        res.status(400).json({ error })
+      });
  };
 
  exports.modifyPost = (req, res) => {
@@ -43,7 +47,10 @@ exports.createPost = (req, res) => {
             if (post.userId === req.auth.userId || isAdmin === "true"){
                 Post.updateOne({ _id: req.params.id}, { ...updatePost, _id: req.params.id})
                 .then(() => res.status(200).json({message : 'Post modifié!'}))
-                .catch(error => res.status(401).json({ error }));
+                .catch(err => {
+                    const error = postErrors(err)
+                    res.status(400).json({ error })
+                  });
             } else {
                         res.status(401).json({ message : 'Non autorise'});
             }})

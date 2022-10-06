@@ -7,6 +7,10 @@ const SignUpForm = () => {
     const [password, setPassword] = useState('');
     const [controlPassword, setControlPassword] = useState('');
 
+    const pseudoError = document.querySelector('.pseudo.error');
+    const emailError = document.querySelector('.email.error');
+    const passwordError = document.querySelector('.password.error');
+
     const handleRegister = async (e) => {
         e.preventDefault();
 
@@ -27,7 +31,12 @@ const SignUpForm = () => {
                 }
             })
             .then((res) => {window.location="/profil"})
-            .catch((err) => console.log(err));
+            .catch((err) => {console.log(err)
+                pseudoError.innerHTML = err.response.data.error.pseudo;
+                emailError.innerHTML = err.response.data.error.email;
+                passwordError.innerHTML = err.response.data.error.password;
+
+            });
         }
     };
 
@@ -43,7 +52,9 @@ const SignUpForm = () => {
                     id="pseudo" 
                     onChange={(e) => setPseudo(e.target.value)} 
                     value={pseudo}
+                    placeholder="Minimum 6 carateres"
                     />
+                    <div className="text-primary pseudo error"></div>
                     <label className="form-label" htmlFor="email">Email</label>
                     <input 
                     type="text" 
@@ -51,8 +62,10 @@ const SignUpForm = () => {
                     className="form-control form-control"
                     id="email" 
                     onChange={(e) => setEmail(e.target.value)}
-                    value={email} 
+                    value={email}
+                    placeholder="nom@email.com"
                     />
+                    <div className="text-primary email error"></div>
                     <label className="form-label" htmlFor="password">Mot de passe</label>
                     <input 
                     type="password" 
@@ -62,6 +75,7 @@ const SignUpForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     value={password} 
                     />
+                    <div className="text-primary password error"></div>
                     <label className="form-label" htmlFor="password-conf">Confirmation du mot de passe</label>
                     <input 
                     type="password" 

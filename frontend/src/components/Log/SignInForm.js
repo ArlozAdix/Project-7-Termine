@@ -41,6 +41,7 @@ const SignInForm = () => {
                     id="email" 
                     onChange={(e) => setEmail(e.target.value)} 
                     value={email}
+                    placeholder="nom@email.com"
                     />
                     <div className="text-danger email error p-2"></div>
                     <label className="form-label" htmlFor="password">Mot de passe</label>
