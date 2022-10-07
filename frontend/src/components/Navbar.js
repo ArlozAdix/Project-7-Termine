@@ -24,7 +24,7 @@ function NavBar() {
 
     return (
         <div className='container-fluid'>
-            <nav className='border-primary navbar navbar-light border' >
+            <nav className='border-primary navbar navbar-light border border-5 rounded-3 mt-2' >
                     <NavLink className='navbar-brand col-sm-3' to="/">
                         <img className="img-fluid" src={logo} alt='logo' />
                     </NavLink>
